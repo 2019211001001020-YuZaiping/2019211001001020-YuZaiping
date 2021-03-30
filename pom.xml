@@ -35,14 +35,20 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <!--https://mvnrepository.com/artifact/com.microsift.sqlserver/mssql-jdbc-->
+    <dependency>
+    <groupId>com.microsoft.sqlserver</groupId>
+    <artifactId>mssql-jdbc</artifactId>
+    <version>8.4.1.jre11</version>
+    </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.0</version>
+
             </plugin>
         </plugins>
     </build>

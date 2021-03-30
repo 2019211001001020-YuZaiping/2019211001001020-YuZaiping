@@ -26,7 +26,41 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.yuzaiping.week3.demo.RegisterServlet</servlet-class>
     </servlet>
-<servlet-mapping>
+    <servlet>
+        <servlet-name>JDBCDemoServlet</servlet-name>
+        <servlet-class>com.yuzaiping.week4.demo.JDBCDemoServlet</servlet-class>
+        <!--//String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+        //String url="jdbc:sqlserver://localhost:1433;databaseName=userdb";
+        //String username="sa";
+        //String password="123456789";
+        --><!--set in web.xml as config parameter ,for only one servlet ,JDBCDemoServlet-->
+        <init-param>
+            <param-name>driver</param-name>
+            <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>url</param-name>
+            <param-value>jdbc:sqlserver://localhost:1433;databaseName=userdb</param-value>
+        </init-param>
+        <init-param>
+            <param-name>username</param-name>
+            <param-value>sa</param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>123456789</param-value>
+        </init-param>
+
+        <load-on-startup>1</load-on-startup>
+        <!--load and call init() when tomcat start-->
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>JDBCDemoServlet</servlet-name>
+        <url-pattern>/jdbc</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
     <servlet-name>LifeCycleServlet</servlet-name>
     <url-pattern>/life</url-pattern>
     <!--/Life==LifeCycleServlet==com.yuzaiping.week3.demo.LifeCycleServlet-->
