@@ -26,14 +26,41 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.yuzaiping.week3.demo.RegisterServlet</servlet-class>
     </servlet>
+    <!--
     <servlet>
         <servlet-name>JDBCDemoServlet</servlet-name>
         <servlet-class>com.yuzaiping.week4.demo.JDBCDemoServlet</servlet-class>
-        <!--//String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+
         //String url="jdbc:sqlserver://localhost:1433;databaseName=userdb";
         //String username="sa";
         //String password="123456789";
         --><!--set in web.xml as config parameter ,for only one servlet ,JDBCDemoServlet-->
+
+        <!---HW4-exercise1-task1
+    <servlet>
+        <servlet-name>ConfigDemoServlet</servlet-name>
+        <servlet-class>com.yuzaiping.week4.demo.ConfigDemoServlet</servlet-class>
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>YuZaiping</param-value>
+        </init-param>
+        <init-param>
+            <param-name>studentId</param-name>
+            <param-value>2019211001001020</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+        <servlet-name>ConfigDemoServlet</servlet-name>
+        <url-pattern>/config</url-pattern>
+    </servlet-mapping>
+    -->
+
+
+
+
+<!--
         <init-param>
             <param-name>driver</param-name>
             <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
@@ -52,13 +79,16 @@
         </init-param>
 
         <load-on-startup>1</load-on-startup>
-        <!--load and call init() when tomcat start-->
-    </servlet>
 
-    <servlet-mapping>
+    </servlet>  -->
+
+   <!-- <servlet-mapping>
         <servlet-name>JDBCDemoServlet</servlet-name>
         <url-pattern>/jdbc</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>   -->
+
+
+
 
 
     <servlet-mapping>
@@ -70,5 +100,22 @@
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern><!--writer this url in action-->
 </servlet-mapping>
+
+    <context-param>
+        <param-name>driver</param-name>
+        <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>url</param-name>
+        <param-value>jdbc:sqlserver://localhost:1433;databaseName=userdb</param-value>
+    </context-param>
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>sa</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>123456789</param-value>
+    </context-param>
 
 </web-app>

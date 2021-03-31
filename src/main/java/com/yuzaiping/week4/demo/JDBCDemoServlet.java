@@ -15,7 +15,7 @@ import java.sql.*;
                 @WebInitParam(name="username",value="sa"),
                 @WebInitParam(name="password",value="123456789"),
 
-        },loadOnStartup=1
+        }//,loadOnStartup=1
 
 )//end of webervlet
 

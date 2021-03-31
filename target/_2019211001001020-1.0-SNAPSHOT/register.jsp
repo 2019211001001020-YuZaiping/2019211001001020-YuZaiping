@@ -17,7 +17,7 @@
     Email<input type="text" name="email"/><br/>
     Gender:<input type="radio" name="gender" value="male">Male<input type="radio" name="gender"value="Female">Female<br/>
     <!--if name is same it make array-->
-    Date of Birth:<input type="text name" name="birthDate"><br/>
+    Date of Birth:<input type="text name" name="birthday"><br/>
     <input type="submit" value="Register"/>
 
 </form>
