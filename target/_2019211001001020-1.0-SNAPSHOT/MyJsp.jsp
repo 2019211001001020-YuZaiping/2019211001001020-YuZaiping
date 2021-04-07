@@ -5,12 +5,8 @@
   Time: 下午 1:29
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<%@include file="header.jsp"%>
+
 <a href="http://www.ecjtu.jx.cn/">go to ecjtu</a><!--method is GET-->
 <form method="post"><!--what is method when we use form?--><!-- its GET,why? default is,form data is added in the URL,U can see  -->
     <!--better to use POST in form,add in not added in the URL-->
@@ -18,5 +14,5 @@
     ID:<input type="text" name="id"><br/>
     <input type="submit" value="Send data to server"/>
 </form>
-</body>
-</html>
+
+<%@include file="footer.jsp"%>
