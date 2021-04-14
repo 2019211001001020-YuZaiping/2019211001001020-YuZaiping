@@ -56,7 +56,7 @@ public class RegisterServlet extends HttpServlet {
         String email =request.getParameter("email");
         String gender =request.getParameter("gender");
         String birthday =request.getParameter("birthday");
-        PreparedStatement pstmt= null; //调用javaSQL包的PreparedStatement来存储待运行的SQL语句
+        PreparedStatement pstmt= null;
         try {
             pstmt = con.prepareStatement(sql);
 
@@ -66,6 +66,7 @@ public class RegisterServlet extends HttpServlet {
             pstmt.setString(4,gender);
             pstmt.setString(5,birthday);
             pstmt.executeUpdate();
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -106,7 +107,7 @@ public class RegisterServlet extends HttpServlet {
         }
         writer.print("</table>");
         writer.print("</html>");
-
+        response.sendRedirect("login.jsp");
         //print - write into response
     }
     @Override
