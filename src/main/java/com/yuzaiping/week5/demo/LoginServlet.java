@@ -1,5 +1,6 @@
 package com.yuzaiping.week5.demo;
-
+import com.yuzaiping.dao.UserDao;
+import com.yuzaiping.model.User;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -28,7 +29,8 @@ public class LoginServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+        //when user click login menu -request is get
+        request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
     }
 
     @Override
@@ -37,7 +39,29 @@ public class LoginServlet extends HttpServlet {
         String sql="Select * from usertable where username=? and password=?";
         String username =request.getParameter("username");
         String password =request.getParameter("password");
+        //now move jdbc code in dao - MVC design
+        //write mvc code
+        //user model and dao
+        UserDao userDao=new UserDao();
         try {
+            User user= userDao.findByUsernamePassword(con,username,password);
+            if (user!=null){
+                //valid
+                //set user into request
+                request.setAttribute("user",user);
+                request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
+            }else{
+                //invalid
+                request.setAttribute("message","Username or Password Error!!!");
+                request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
+            }
+            //forward - JSP
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+        /*try {
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setString(1,username);
             pstmt.setString(2,password);
@@ -62,7 +86,7 @@ public class LoginServlet extends HttpServlet {
             }//end of else
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }
+        }*/
     }
 }
 

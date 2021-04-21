@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.yuzaiping.model.User" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2021/4/14 0014
@@ -12,7 +12,7 @@
     <tr><td>Username:</td><td><%=request.getAttribute("username")%></td></tr>
     <tr><td>Password:</td><td><%=request.getAttribute("password")%></td></tr>
     <tr><td>Email:</td><td><%=request.getAttribute("email")%></td></tr>
-    <tr><td>Gender:</td><td><%=request.getAttribute("gender")%></td></tr>
+    <tr><td>Sex:</td><td><%=request.getAttribute("gender")%></td></tr>
     <tr><td>Birthday:</td><td><%=request.getAttribute("birthday")%></td><br></tr>
 </table>
 <%@include file="footer.jsp"%>

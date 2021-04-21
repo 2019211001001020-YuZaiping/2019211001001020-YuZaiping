@@ -118,4 +118,8 @@
         <param-value>123456789</param-value>
     </context-param>
 
+    <welcome-file-list>
+        <welcome-file>home</welcome-file><!--when you run app-first request send to home ... -HomeServlet-->
+    </welcome-file-list>
+
 </web-app>
