@@ -17,89 +17,86 @@
     <!--automatic code-->
 
     <servlet-mapping>
-    <servlet-name>anyName</servlet-name>
-    <url-pattern>/hello</url-pattern><!--url must start with/-->
+        <servlet-name>anyName</servlet-name>
+        <url-pattern>/helloworld</url-pattern><!--url must start with/-->
     </servlet-mapping>
     <!--x=5,a=x so we can say a=5
     so /hello==com.yuzaiping.week2.demo.HelloWordServlet-->
-    <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>com.yuzaiping.week3.demo.RegisterServlet</servlet-class>
-    </servlet>
+<!--    <servlet>-->
+<!--        <servlet-name>RegisterServlet</servlet-name>-->
+<!--        <servlet-class>com.yuzaiping.week3.demo.RegisterServlet</servlet-class>-->
+<!--    </servlet>-->
     <!--
     <servlet>
         <servlet-name>JDBCDemoServlet</servlet-name>
         <servlet-class>com.yuzaiping.week4.demo.JDBCDemoServlet</servlet-class>
-
         //String url="jdbc:sqlserver://localhost:1433;databaseName=userdb";
         //String username="sa";
         //String password="123456789";
         --><!--set in web.xml as config parameter ,for only one servlet ,JDBCDemoServlet-->
 
-        <!---HW4-exercise1-task1
-    <servlet>
-        <servlet-name>ConfigDemoServlet</servlet-name>
-        <servlet-class>com.yuzaiping.week4.demo.ConfigDemoServlet</servlet-class>
-        <init-param>
-            <param-name>name</param-name>
-            <param-value>YuZaiping</param-value>
-        </init-param>
-        <init-param>
-            <param-name>studentId</param-name>
-            <param-value>2019211001001020</param-value>
-        </init-param>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register</url-pattern>
-        <servlet-name>ConfigDemoServlet</servlet-name>
-        <url-pattern>/config</url-pattern>
-    </servlet-mapping>
-    -->
-
-
-
-
-<!--
-        <init-param>
-            <param-name>driver</param-name>
-            <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
-        </init-param>
-        <init-param>
-            <param-name>url</param-name>
-            <param-value>jdbc:sqlserver://localhost:1433;databaseName=userdb</param-value>
-        </init-param>
-        <init-param>
-            <param-name>username</param-name>
-            <param-value>sa</param-value>
-        </init-param>
-        <init-param>
-            <param-name>password</param-name>
-            <param-value>123456789</param-value>
-        </init-param>
-
-        <load-on-startup>1</load-on-startup>
-
-    </servlet>  -->
-
-   <!-- <servlet-mapping>
-        <servlet-name>JDBCDemoServlet</servlet-name>
-        <url-pattern>/jdbc</url-pattern>
-    </servlet-mapping>   -->
-
-
-
-
-
-    <servlet-mapping>
-    <servlet-name>LifeCycleServlet</servlet-name>
-    <url-pattern>/life</url-pattern>
-    <!--/Life==LifeCycleServlet==com.yuzaiping.week3.demo.LifeCycleServlet-->
-</servlet-mapping>
+    <!---HW4-exercise1-task1
+<servlet>
+    <servlet-name>ConfigDemoServlet</servlet-name>
+    <servlet-class>com.yuzaiping.week4.demo.ConfigDemoServlet</servlet-class>
+    <init-param>
+        <param-name>name</param-name>
+        <param-value>YuZaiping</param-value>
+    </init-param>
+    <init-param>
+        <param-name>studentId</param-name>
+        <param-value>2019211001001020</param-value>
+    </init-param>
+</servlet>
 <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register</url-pattern><!--writer this url in action-->
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/register</url-pattern>
+    <servlet-name>ConfigDemoServlet</servlet-name>
+    <url-pattern>/config</url-pattern>
 </servlet-mapping>
+-->
+
+
+
+
+    <!--
+            <init-param>
+                <param-name>driver</param-name>
+                <param-value>com.microsoft.sqlserver.jdbc.SQLServerDriver</param-value>
+            </init-param>
+            <init-param>
+                <param-name>url</param-name>
+                <param-value>jdbc:sqlserver://localhost:1433;databaseName=userdb</param-value>
+            </init-param>
+            <init-param>
+                <param-name>username</param-name>
+                <param-value>sa</param-value>
+            </init-param>
+            <init-param>
+                <param-name>password</param-name>
+                <param-value>123456789</param-value>
+            </init-param>
+            <load-on-startup>1</load-on-startup>
+        </servlet>  -->
+
+    <!-- <servlet-mapping>
+         <servlet-name>JDBCDemoServlet</servlet-name>
+         <url-pattern>/jdbc</url-pattern>
+     </servlet-mapping>   -->
+
+
+
+
+
+    <servlet-mapping>
+        <servlet-name>LifeCycleServlet</servlet-name>
+        <url-pattern>/life</url-pattern>
+        <!--/Life==LifeCycleServlet==com.yuzaiping.week3.demo.LifeCycleServlet-->
+    </servlet-mapping>
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>RegisterServlet</servlet-name>-->
+<!--        <url-pattern>/register</url-pattern>&lt;!&ndash;writer this url in action&ndash;&gt;-->
+<!--    </servlet-mapping>-->
 
     <context-param>
         <param-name>driver</param-name>
@@ -121,5 +118,34 @@
     <welcome-file-list>
         <welcome-file>home</welcome-file><!--when you run app-first request send to home ... -HomeServlet-->
     </welcome-file-list>
+    <!--chain of filters -->
+    <!--1st -->
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.yuzaiping.filter.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/hello</url-pattern>
+    </filter-mapping>
+    <!--2 nd-write after 1st one in web.xml-->
+    <filter>
+        <filter-name>HelloFilter</filter-name>
+        <filter-class>com.yuzaiping.filter.HelloFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HelloFilter</filter-name>
+        <url-pattern>/hello</url-pattern><!--url of HelloServlet - this filter is for only for HelloServlet-->
+    </filter-mapping>
+    <!--3rd one -->
+    <filter>
+        <filter-name>LoggerFilter</filter-name>
+        <filter-class>com.yuzaiping.filter.LoggerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoggerFilter</filter-name>
+        <url-pattern>/hello</url-pattern>
+    </filter-mapping>
+
 
 </web-app>

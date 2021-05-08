@@ -1,7 +1,5 @@
 package com.yuzaiping.dao;
-
 import com.yuzaiping.model.User;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -62,7 +60,6 @@ public class UserDao implements IUserDao{
         st.setString(4,user.getGender());
         st.setDate(5, (java.sql.Date) user.getBirthday());
         st.setInt(6,user.getId());
-        st.executeQuery();
         if (st.executeUpdate() > 0) {
             return 1;
         }

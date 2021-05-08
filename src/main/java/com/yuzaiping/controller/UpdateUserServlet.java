@@ -1,5 +1,4 @@
 package com.yuzaiping.controller;
-
 import com.yuzaiping.dao.UserDao;
 import com.yuzaiping.model.User;
 import javax.servlet.*;
@@ -30,7 +29,7 @@ public class UpdateUserServlet extends HttpServlet {
         String id =request.getParameter("id");
         String username =request.getParameter("username");//name of input type -<input type="text" name = "username"/><br/>
         String password =request.getParameter("password");
-        String email =request.getParameter("mail");
+        String email =request.getParameter("email");
         String gender =request.getParameter("gender");
         String birthday = request.getParameter("birthday");
         //TODO 2: create an project of User Model

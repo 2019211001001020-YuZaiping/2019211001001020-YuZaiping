@@ -11,7 +11,9 @@ import java.sql.*;
 
 
 
-
+@WebServlet(
+        urlPatterns = {"/register"}
+)
 //automatic -new --> servlet
 public class RegisterServlet extends HttpServlet {
     Connection con=null; //class variable
@@ -42,7 +44,7 @@ public class RegisterServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+         request.getRequestDispatcher("WEB-INF/views/register.jsp").forward(request,response);
     }
 
     @Override
@@ -102,6 +104,7 @@ public class RegisterServlet extends HttpServlet {
                 writer.print("</td>");
                 writer.print("</tr>");
             }
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
