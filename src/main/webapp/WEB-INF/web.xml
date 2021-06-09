@@ -120,32 +120,48 @@
     </welcome-file-list>
     <!--chain of filters -->
     <!--1st -->
+<!--    <filter>-->
+<!--        <filter-name>AuthFilter</filter-name>-->
+<!--        <filter-class>com.yuzaiping.filter.AuthFilter</filter-class>-->
+<!--    </filter>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>AuthFilter</filter-name>-->
+<!--        <url-pattern>/hello</url-pattern>-->
+<!--    </filter-mapping>-->
+<!--    &lt;!&ndash;2 nd-write after 1st one in web.xml&ndash;&gt;-->
+<!--    <filter>-->
+<!--        <filter-name>HelloFilter</filter-name>-->
+<!--        <filter-class>com.yuzaiping.filter.HelloFilter</filter-class>-->
+<!--    </filter>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>HelloFilter</filter-name>-->
+<!--        <url-pattern>/hello</url-pattern>&lt;!&ndash;url of HelloServlet - this filter is for only for HelloServlet&ndash;&gt;-->
+<!--    </filter-mapping>-->
+<!--    &lt;!&ndash;3rd one &ndash;&gt;-->
+<!--    <filter>-->
+<!--        <filter-name>LoggerFilter</filter-name>-->
+<!--        <filter-class>com.yuzaiping.filter.LoggerFilter</filter-class>-->
+<!--    </filter>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>LoggerFilter</filter-name>-->
+<!--        <url-pattern>/hello</url-pattern>-->
+<!--    </filter-mapping>-->
+
+
     <filter>
-        <filter-name>AuthFilter</filter-name>
-        <filter-class>com.yuzaiping.filter.AuthFilter</filter-class>
+        <filter-name>YourNameFilter</filter-name>
+        <filter-class>com.lab2.YourNameFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>AuthFilter</filter-name>
-        <url-pattern>/hello</url-pattern>
-    </filter-mapping>
-    <!--2 nd-write after 1st one in web.xml-->
-    <filter>
-        <filter-name>HelloFilter</filter-name>
-        <filter-class>com.yuzaiping.filter.HelloFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>HelloFilter</filter-name>
-        <url-pattern>/hello</url-pattern><!--url of HelloServlet - this filter is for only for HelloServlet-->
-    </filter-mapping>
-    <!--3rd one -->
-    <filter>
-        <filter-name>LoggerFilter</filter-name>
-        <filter-class>com.yuzaiping.filter.LoggerFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>LoggerFilter</filter-name>
-        <url-pattern>/hello</url-pattern>
+        <filter-name>YourNameFilter</filter-name>
+        <url-pattern>/lab2/welcome.jsp</url-pattern>
+        <url-pattern>/lab2/validation.jsp</url-pattern>
     </filter-mapping>
 
 
+    <welcome-file-list>
+        <welcome-file>home</welcome-file>
+    </welcome-file-list>
+
+    <display-name>Archetype Created Web Application</display-name>
 </web-app>
