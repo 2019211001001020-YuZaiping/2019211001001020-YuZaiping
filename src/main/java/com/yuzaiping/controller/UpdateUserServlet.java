@@ -10,27 +10,28 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@WebServlet(name = "UpdateUserServlet", value = "/updateUser")
+@WebServlet(name = "UpdateUserServlet",value="/updateUser")//url
 public class UpdateUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         //write code
-        //ToDo 1:forward to WEB-INF/views/updateUser.jsp
+        //TODO 1: forward to WEB-INF/views/updateUser.jsp
         request.getRequestDispatcher("WEB-INF/views/updateUser.jsp").forward(request,response);
-        //ToDo 2:create one jsp page -update User
+        //TODO 2: create one jsp page - update User
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //write code to update user info-can update password ,email,gender,birthday
+
+        //write code to update user info- can update password,email,sex,birthday
         //TODO 1: get all (6) request parameter
         Connection con = null;
         String id =request.getParameter("id");
-        String username =request.getParameter("username");//name of input type -<input type="text" name = "username"/><br/>
+        String username =request.getParameter("Username");//name of input type -<input type="text" name = "username"/><br/>
         String password =request.getParameter("password");
-        String email =request.getParameter("email");
-        String gender =request.getParameter("gender");
+        String email =request.getParameter("Email");
+        String sex =request.getParameter("sex");
         String birthday = request.getParameter("birthday");
         //TODO 2: create an project of User Model
         User u=new User();
@@ -47,7 +48,7 @@ public class UpdateUserServlet extends HttpServlet {
         u.setUsername(username);
         u.setPassword(password);
         u.setEmail(email);
-        u.setGender(gender);
+        u.setGender(u.getGender());
         u.setBirthday(sqlDate);
         //TODO 4: create an object of UserDao
         UserDao userdao = new UserDao();
@@ -60,11 +61,11 @@ public class UpdateUserServlet extends HttpServlet {
             session.setMaxInactiveInterval(60*60);
             session.setAttribute("user",u);
             if(i==1){
-                request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
+                request.getRequestDispatcher("accountDetails").forward(request,response);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        //TODO 6: forward to WEB-INF/views/userInfo.jsp
+        //TODO 6: forward to WEB-INF/views/userinfo.jsp
     }
 }
