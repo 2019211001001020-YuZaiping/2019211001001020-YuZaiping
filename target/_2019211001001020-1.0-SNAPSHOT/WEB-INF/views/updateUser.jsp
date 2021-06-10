@@ -13,12 +13,11 @@
     //get user from session
     User u=(User) session.getAttribute("user");
 %>
-<form method="post" action="updateUser"> <!-- what is method when wo use form?--><!--its GET , why? default is GET,form data is added in the URL,you can see-->
-    <!-- its better to use POST in form,data in not added in the URL-->
-    <input TYPE="hidden" name="id" value="<%=u.getId()%>">
-    UserName <input type="text" name="username" value="<%=u.getUsername()%>" ><br/>
-    PassWord <input type="password" name="password" value="<%=u.getPassword()%>" ><br/>
-    Email <input type="text" name="email" value="<%=u.getEmail()%>" ><br/>
+<form method="post" action="updateUser">
+    <input type="hidden" name="id" value="<%=u.getId()%>">
+    username<input type="text" name="username" value="<%=u.getUsername()%>"/><br/>
+    password<input type="password" name="password" value="<%=u.getPassword()%>"/><br/>
+    Email<input type="text" name="email" value="<%=u.getEmail()%>"/><br/>
     Gender <input type="radio" name="gender" value="male" <%="male".equals(u.getGender())?"checked":""%>>Male
     <input type="radio" name="gender" value="female" <%= "female".equals(u.getGender())?"checked" :""%>>Female<br/>
     <!--if name is same it makes array-->

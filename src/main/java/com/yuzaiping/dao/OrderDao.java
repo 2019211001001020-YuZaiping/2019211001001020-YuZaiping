@@ -1,6 +1,4 @@
-
 package com.yuzaiping.dao;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,11 +11,15 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-
 import com.yuzaiping.model.Item;
 import com.yuzaiping.model.Order;
-
 import com.yuzaiping.model.Product;
+
+
+
+
+
+
 
 /**
  * A data access object (DAO) providing persistence and search support for Order
@@ -58,7 +60,7 @@ public class OrderDao implements IOrderDao {
 			st.setDouble(14, order.getOrderTotal());
 			flag = st.executeUpdate();//insert a row in order table
 
-			//get newly inserted OrderId- select
+			//get newly inserted OrderId
 			String lastId="SELECT max(orderid) as orderId from [dbo].[order] ";//"SELECT max(orderid) as orderId from userdb.order"; for mysql
 			ResultSet rs=con.createStatement().executeQuery(lastId);
 			rs.next();
