@@ -146,7 +146,7 @@
 					<form method="get" target='_blank' action="<%=basePath%>SearchServlet" style="width: 426px; ">
 						<input type="text" name="txt" placeholder="search"/>
 						<select name="search" style="width:65px; ">
-							<option value="baidu">Baidu</option>
+							<li><a href="<%=basePath%>contactUs">Contact</a></li>
 							<option value="bing">Bing</option>
 							<option value="google">Google</option>
 						</select>&nbsp;<button type="submit"><i class="fa fa-search"></i></button>
